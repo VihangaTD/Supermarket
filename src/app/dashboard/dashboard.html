@@ -1,0 +1,66 @@
+<app-dashboard-header></app-dashboard-header>
+
+<div class="mt-5 container ">
+    <div class="row justify-content-evenly">
+        
+        <!-- <div class="col-6 col-md-6 border border-primary rounded-3 border-3">
+            <p>Number of Customers: {{numberOfCustomer}}</p>
+        </div> --> 
+
+        <div class="card" style="width: 18rem;">
+            <img src="assets/4.jpg" class="card-img-top" alt="card-img">
+            <div class="card-body">
+                <p class="card-text">Number of Customers: <span [ngStyle]="{'color':'red'}">{{numberOfCustomer}}</span></p>
+            </div>
+        </div>
+
+        <!-- <div [hidden]="isShow" class="col-6 col-md-6 border border-dark rounded-3 border-3">
+            <p>Number of Items: {{numberOfItems}}</p>
+        </div> -->
+
+        <div [hidden]="isShow" class="card" style="width: 18rem;">
+            <img src="assets/6.jpg" class="card-img-top" alt="card-img">
+            <div class="card-body">
+                <p class="card-text">Number of Items: <span [ngStyle]="{'color':'red'}">{{numberOfItems}}</span></p>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-info mt-5" (click)="toggleButtonClick()">Toggle</button>
+
+    @if (numberOfSuppliers>0) {
+        <div class="mt-4" >
+    
+            <!-- <div class="mt-5">
+             <h5>Item List</h5>
+                 <pre>
+                     {{itemList | json}}
+                </pre>
+            </div> -->
+
+            <h2>Out of Stock item list:</h2>
+        </div>
+    }
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Unit Price</th>
+                <th [ngClass]="'qty-head'">Qty on Hand</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of itemList; track $index){
+                @if(item.qtyHand === 0){
+                <tr>
+                    <td [ngClass]="'tbl-code'">{{item.code}}</td>
+                    <td>{{item.description | uppercase}}</td>
+                    <td>{{item.price | currency:'LKR'}}</td>
+                    <td>{{item.qtyHand}}</td>
+                </tr>
+            }}
+        </tbody>
+    </table>
+    
+</div>
