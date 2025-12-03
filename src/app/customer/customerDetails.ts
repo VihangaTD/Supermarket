@@ -1,5 +1,5 @@
 export interface CustomerDetails{
-    id:string;
+    id:number;
     name:string;
     address:string;
     tel:string;

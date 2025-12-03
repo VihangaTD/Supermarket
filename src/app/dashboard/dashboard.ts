@@ -12,9 +12,6 @@ import { CurrencyPipe, NgClass, UpperCasePipe, NgStyle } from "@angular/common";
 })
 export class Dashboard {
   
-  
-
-
   numberOfCustomer:number = 540;
   numberOfItems:number = 1200;
   numberOfSuppliers:number = 10;

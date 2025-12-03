@@ -46,4 +46,37 @@
         Save Customer
     </button>
   </form>
+  @if (apiData && apiData.length>0) {
+    <table class="table table-striped mt-5">
+      <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Tel</th>
+      </thead>
+      <tbody>
+        @for (customer of apiData; track $index) {
+          <tr>
+            <td>{{customer.data.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.address}}</td>
+            <td>{{customer.tel}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @if (!apiData || apiData.length === 0) {
+    <div>
+      No Customer found
+    </div>
+  }
+  <!-- <div class="mt-5">
+        <h5>Post List</h5>
+        @if (apiData) {
+            <pre>
+                {{apiData | json}}
+            </pre>
+        }
+    </div> -->
 </div>
